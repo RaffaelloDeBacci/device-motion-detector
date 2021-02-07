@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion/ngx';
-import { Gyroscope, GyroscopeOrientation, GyroscopeOptions } from '@ionic-native/gyroscope/ngx';
+import { DeviceMotion } from '@ionic-native/device-motion/ngx';
+import { Gyroscope  } from '@ionic-native/gyroscope/ngx';
 
 @Component({
   selector: 'app-motion-detector',
@@ -14,7 +14,8 @@ export class MotionDetectorComponent implements OnInit {
   ngOnInit() {}
 
   recordData(){
-
+    console.log(this.deviceMotion);
+    console.log(this.gyroscope);
   }
 
-}
+} 
