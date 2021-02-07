@@ -1,6 +1,6 @@
 {
   "appId": "io.ionic.starter",
-  "appName": "Potholes",
+  "appName": "device-motion-detector",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",

@@ -1,5 +1,5 @@
 {
-  "name": "Potholes",
+  "name": "device-motion-detector",
   "integrations": {
     "capacitor": {}
   },
