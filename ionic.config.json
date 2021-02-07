@@ -1,0 +1,7 @@
+{
+  "name": "Potholes",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
