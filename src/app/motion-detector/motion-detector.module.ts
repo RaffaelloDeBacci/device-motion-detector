@@ -5,11 +5,11 @@ import { RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { MessageComponent } from './message.component';
+import { MotionDetectorComponent } from './motion-detector.component';
 
 @NgModule({
   imports: [ CommonModule, FormsModule, IonicModule, RouterModule],
-  declarations: [MessageComponent],
-  exports: [MessageComponent]
+  declarations: [MotionDetectorComponent],
+  exports: [MotionDetectorComponent]
 })
-export class MessageComponentModule {}
+export class MotionDetectorComponentModule {}
