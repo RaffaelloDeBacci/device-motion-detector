@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion/ngx';
 import { Gyroscope, GyroscopeOrientation, GyroscopeOptions } from '@ionic-native/gyroscope/ngx';
 
 declare const navigator: any; 
@@ -12,12 +13,11 @@ export class MotionDetectorComponent implements OnInit {
 
   private active : boolean;
   private accellerometerWatchID : any;
-  private accelerometerOptions : any;
+  private accellerometerSubscription : any;
 
-  constructor(private gyroscope: Gyroscope) { 
+  constructor(private gyroscope: Gyroscope, private deviceMotion: DeviceMotion) { 
     this.active = false;
-    this.accellerometerWatchID = 0;
-    this.accelerometerOptions = { frequency: 3000 };
+    this.accellerometerSubscription = 0;
   }
 
   ngOnInit() {}
@@ -33,22 +33,15 @@ export class MotionDetectorComponent implements OnInit {
   }
 
   recordAccellerationData(){
-    this.accellerometerWatchID = navigator.accelerometer.watchAcceleration(this.accelerometerSuccess, this.accelerometerError, this.accelerometerOptions);
+    this.accellerometerSubscription = this.deviceMotion.watchAcceleration().subscribe((acceleration: DeviceMotionAccelerationData) => {
+      console.log(acceleration);
+    });
   }
 
-  accelerometerSuccess(acceleration){
-    alert('Acceleration X: ' + acceleration.x + '\n' +
-          'Acceleration Y: ' + acceleration.y + '\n' +
-          'Acceleration Z: ' + acceleration.z + '\n' +
-          'Timestamp: '      + acceleration.timestamp + '\n');
-  }
 
-  accelerometerError(error) {
-    console.log(error);
-  }
 
   stopRecordingAccellerationData(){
-    navigator.accelerometer.clearWatch( this.accellerometerWatchID );
+    this.accellerometerSubscription.unsubscribe();
   }
 
 } 
